@@ -74,4 +74,23 @@ public class ParkingLot {
     public void currentStatus(){
         System.out.println("There are currently " + checkMotorcycleSpots() + " motorcycle spaces, " + checkRegularSpots() + " regular spaces, and " + checkLargeSpots() + " large spaces available.");
     }
+
+    public int checkRegularForVan(){
+        for(int i=0;i<regularSpaces.length;i++){
+            if(regularSpaces[i] == 0 && regularSpaces[i+1] == 0 && regularSpaces[i+2] == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void leaveMotorcycle(int number){
+        motorcycleSpaces[number-1] = 0;
+    }
+    public void leaveRegular(int number){
+        regularSpaces[number-1] = 0;
+    }
+    public void leaveLarge(int number){
+        largeSpaces[number-1] = 0;
+    }
 }
