@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        final int motorCycleSpots = 3;
-        final int regularSpots = 5;
-        final int largeSpots = 1;
+        final int motorCycleSpots = 3000;
+        final int regularSpots = 50000;
+        final int largeSpots = 1000;
         ParkingLot parkingLot = new ParkingLot(motorCycleSpots, regularSpots, largeSpots);
         boolean option1Chosen = false;
         boolean option2Chosen = false;
@@ -25,24 +25,12 @@ public class Main {
                     System.out.println("F) How Many Vehicles Are Parked");
                     String question = scanner.next();
                     switch (question) {
-                        case "A", "a" -> {
-                            parkingLot.totalSpots();
-                        }
-                        case "B", "b" -> {
-                            parkingLot.currentStatus();
-                        }
-                        case "C", "c" -> {
-                            System.out.println("There are currently " + parkingLot.getMotorbikeNumber() + " motorcycles in the lot. ");
-                        }
-                        case "D", "d" -> {
-                            System.out.println("There are currently " + parkingLot.getCarNumber() + " cars in the lot. ");
-                        }
-                        case "E", "e" -> {
-                            System.out.println("There are currently " + parkingLot.getVansNumber() + " vans in the lot. ");
-                        }
-                        case "F", "f" -> {
-                            System.out.println("There are currently " + ((parkingLot.getMotorbikeNumber() + parkingLot.getCarNumber() + parkingLot.getVansNumber()) + " vehicles in the lot. "));
-                        }
+                        case "A", "a" -> parkingLot.totalSpots();
+                        case "B", "b" -> parkingLot.currentStatus();
+                        case "C", "c" -> System.out.println("There are currently " + parkingLot.getMotorbikeNumber() + " motorcycles in the lot. ");
+                        case "D", "d" -> System.out.println("There are currently " + parkingLot.getCarNumber() + " cars in the lot. ");
+                        case "E", "e" -> System.out.println("There are currently " + parkingLot.getVansNumber() + " vans in the lot. ");
+                        case "F", "f" -> System.out.println("There are currently " + ((parkingLot.getMotorbikeNumber() + parkingLot.getCarNumber() + parkingLot.getVansNumber()) + " vehicles in the lot. "));
 
                     }
                 } else if (infoParkOrLeave.equals("B") || infoParkOrLeave.equals("b")) {

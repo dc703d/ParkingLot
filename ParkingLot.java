@@ -23,33 +23,33 @@ public class ParkingLot {
     }
 
     public int checkMotorcycleSpots(){
-        int availabeSpots = motorcycleSpaces.length;
-        for(int i=0; i<motorcycleSpaces.length;i++) {
-            if (motorcycleSpaces[i] == 1) {
-                availabeSpots--;
+        int availableSpots = motorcycleSpaces.length;
+        for (int motorcycleSpace : motorcycleSpaces) {
+            if (motorcycleSpace == 1) {
+                availableSpots--;
             }
         }
-        return availabeSpots;
+        return availableSpots;
     }
 
     public int checkRegularSpots(){
-        int availabeSpots = regularSpaces.length;
-        for(int i=0; i<regularSpaces.length;i++) {
-            if (regularSpaces[i] == 1) {
-                availabeSpots--;
+        int availableSpots = regularSpaces.length;
+        for (int regularSpace : regularSpaces) {
+            if (regularSpace == 1) {
+                availableSpots--;
             }
         }
-        return availabeSpots;
+        return availableSpots;
     }
 
     public int checkLargeSpots(){
-        int availabeSpots = largeSpaces.length;
+        int availableSpots = largeSpaces.length;
         for(int i=0; i<largeSpaces.length;i++) {
             if (largeSpaces[i] == 1) {
-                availabeSpots--;
+                availableSpots--;
             }
         }
-        return availabeSpots;
+        return availableSpots;
     }
 
     public void currentStatus(){
