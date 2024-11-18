@@ -1,12 +1,12 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ParkingLot {
-    private int[] motorcycleSpaces;
-    private int[] regularSpaces;
-    private int[] largeSpaces;
-
+    private final int[] motorcycleSpaces;
+    private final int[] regularSpaces;
+    private final int[] largeSpaces;
+    private int motorbikeNumber = 0;
+    private int carNumber = 0;
+    private int vansNumber = 0;
     ParkingLot(int numberOfMotorcycleSpaces, int numberOfRegularSpaces, int numberOfLargeSpaces ){
         motorcycleSpaces = new int[numberOfMotorcycleSpaces];
         Arrays.fill(motorcycleSpaces,0);
@@ -16,29 +16,10 @@ public class ParkingLot {
         Arrays.fill(largeSpaces,0);
     }
 
-    public void remainingSpots() {
-        int remaining = 0;
-        for(int i=0;i<motorcycleSpaces.length;i++){
-            if(motorcycleSpaces[i] == 0){
-                remaining++;
-            }
-        }
-        for(int j=0;j<regularSpaces.length;j++){
-            if(regularSpaces[j] == 0){
-                remaining++;
-            }
-        }
-        for(int k=0;k<regularSpaces.length;k++){
-            if(regularSpaces[k] == 0){
-                remaining++;
-            }
-        }
-        System.out.println("There are "+ remaining + " spots remaining.");
-    }
 
     public void totalSpots(){
         int totalSpots = motorcycleSpaces.length + regularSpaces.length + largeSpaces.length;
-        System.out.println("There are " + totalSpots + " total spots.");
+        System.out.println("There are " + totalSpots + " total spots in the parking lot.");
     }
 
     public int checkMotorcycleSpots(){
@@ -76,7 +57,7 @@ public class ParkingLot {
     }
 
     public int checkRegularForVan(){
-        for(int i=0;i<regularSpaces.length;i++){
+        for(int i=0;i<regularSpaces.length-2;i++){
             if(regularSpaces[i] == 0 && regularSpaces[i+1] == 0 && regularSpaces[i+2] == 0) {
                 return i;
             }
@@ -93,4 +74,82 @@ public class ParkingLot {
     public void leaveLarge(int number){
         largeSpaces[number-1] = 0;
     }
+
+    public void leaveRegularforVan(int number){
+        regularSpaces[number-1] = 0;
+        regularSpaces[number] = 0;
+        regularSpaces[number+1] = 0;
+    }
+
+    public int parkMotorcycle(){
+        for(int i=0;i<motorcycleSpaces.length;i++){
+            if(motorcycleSpaces[i] == 0){
+                motorcycleSpaces[i] = 1;
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int parkRegular(){
+        for(int i=0;i<regularSpaces.length;i++){
+            if(regularSpaces[i] == 0){
+                regularSpaces[i] = 1;
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int parkLarge(){
+        for(int i=0;i<largeSpaces.length;i++){
+            if(largeSpaces[i] == 0){
+                largeSpaces[i] = 1;
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int parkRegularforVan(){
+        for(int i=0;i<regularSpaces.length;i++){
+            if(regularSpaces[i] == 0 && regularSpaces[i+1] == 0 && regularSpaces[i+2] == 0) {
+                regularSpaces[i] = 1;
+                regularSpaces[i+1] = 1;
+                regularSpaces[i+2] = 1;
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void increaseMotorbikeNumber(){
+        motorbikeNumber++;
+    }
+    public void increaseCarNumber(){
+       carNumber++;
+    }
+    public void increaseVansNumber(){
+        vansNumber++;
+    }
+
+    public void decreaseMotorbikeNumber(){
+        motorbikeNumber--;
+    }
+    public void decreaseCarNumber(){
+        carNumber--;
+    }
+    public void decreaseVansNumber(){
+        vansNumber--;
+    }
+
+    public int getMotorbikeNumber(){
+        return motorbikeNumber;
+    }
+    public int getCarNumber(){
+        return carNumber;
+    }
+    public int getVansNumber(){
+        return vansNumber;
+    }
+
+
 }
